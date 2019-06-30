@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>VUE JS</title>
+</head>
+<body>
+   <div id="app">
+
+      <ul>
+         <li v-for="person in people">{{ person }}</li>
+      </ul>
+
+      <hr>
+
+      <ul>
+         <li v-for="(person, index) in people">{{ index + 1}} {{ person }}</li>
+      </ul>
+
+      <hr>
+      <!--         of ES6 - in ES5-->
+      <ul>
+         <li v-for="(person, index) of people2">{{ index + 1}}. {{ person.name }} - <b>{{ person.age}}</b></li>
+      </ul>
+
+      <hr>
+
+      <ol>
+         <li v-for="num of 3"> {{ num }}</li>
+      </ol>
+
+      <hr>
+
+      <ul>
+         <li v-for="(value, key, index) in person"><em>{{ index + 1}}</em> <b>{{ key }}</b> {{ value }} </li>
+      </ul>
+
+
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+   <script>
+      new Vue({
+         el: '#app',
+         data: {
+            people: [
+                'Vlad',
+                'Max',
+                'Elena',
+                'Valera'
+            ],
+            people2: [
+               {name: 'Vlad', age: 20},
+               {name: 'Max', age: 25},
+               {name: 'Elena', age: 30},
+               {name: 'Valera', age: 35}
+            ],
+            person: {
+               name: 'Max',
+               age: 50,
+               job: 'Frontend'
+            }
+         }
+      })
+   </script>
+</body>
+</html>
