@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>VUE JS</title>
+</head>
+<body>
+   <div id="app">
+      <!--( @input="inputValue = $event.target.value" :value="inputValue" ) === v:model -->
+      <input type="text" v-model="inputValue">
+
+      <h2>{{ inputValue }}</h2>
+
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+   <script>
+      new Vue({
+         el: '#app',
+         data: {
+            inputValue: 'Initial value'
+         }
+      })
+   </script>
+</body>
+</html>
