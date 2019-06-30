@@ -3,31 +3,27 @@
 <head>
    <meta charset="UTF-8">
    <title>VUE JS</title>
-   <style>
-      .circle {
-         width: 100px;
-         height: 100px;
-         border-radius: 50%;
-         border: 1px solid black;
-         display: inline-block;
-         margin: 40px;
-      }
-
-      .red {background: red;}
-      .blue {background: blue;}
-      .green {background: green;}
-   </style>
 </head>
 <body>
    <div id="app">
-      <div class="circle" v-bind:style="circleClasses"></div>
-      <div class="circle" v-bind:style="[circleClasses, {'width': height + 'px'}]"></div>
+<!--      <h2 v-if="type === 'a'">A</h2>-->
+<!--      <h2 v-else-if="type === 'b'">B</h2>-->
+<!--      <h2 v-else-if="type === 'c'">C</h2>-->
+<!--      <h2 v-else>Not match!</h2>-->
+<!--      -->
+<!--      <hr>-->
 
-      <hr>
+<!--      <input type="text" v-model="type">-->
 
-      <input type="text" v-model="color">
-      <input type="text" v-model="height">
+      <template v-if="isVisible">
+         <h2>I am title</h2>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, quae.</p>
+      </template>
 
+      <template v-else>
+         <h2 style="color: red">I am title</h2>
+         <p style="color: blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, quae.</p>
+      </template>
    </div>
 
    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -35,21 +31,8 @@
       new Vue({
          el: '#app',
          data: {
-            isActive: false,
-            color: 'blue',
-            height: 100,
-            borderColor: 'red'
-         },
-         computed: {
-            circleClasses: function () {
-               return {
-                  'background': this.color,
-                  'height': this.height + 'px'
-               }
-            }
-         },
-         methods: {
-
+            isVisible: false
+            // type: 'a'
          }
       })
    </script>
