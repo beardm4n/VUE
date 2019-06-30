@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>VUE JS</title>
+</head>
+<body>
+
+   <div id="app">
+      <h2 ref="heading">{{ title }}</h2>
+      <button @click="updateFirstTitle">Update title</button>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+   <script>
+
+      new Vue ({
+         el: '#app',
+         data: {
+            title: 'Hello, I am Vue!'
+         },
+         methods: {
+            updateFirstTitle() {
+               this.title = 'New title!'
+               this.$refs.heading.style.color = 'red'
+               console.log(this.$refs)
+            }
+         }
+      })
+   </script>
+</body>
+</html>
