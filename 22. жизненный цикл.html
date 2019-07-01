@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>VUE JS</title>
+</head>
+<body>
+   <div id="app">
+      <h2>{{ title }}</h2>
+
+      <button @click="title = 'Changed title'">Change</button>
+
+      <button @click="doDestroy">Destroy</button>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+   <script>
+      new Vue ({
+         el: '#app',
+         data: {
+            title: 'Hello I`m Vue!'
+         },
+         methods: {
+            doDestroy: function () {
+               this.$destroy()
+            }
+         },
+
+         // жизненный цикл приложения ⟱
+         //в корне объекта (компонента VUE) мы можем вызывать тот или иной метод
+
+         // метод №1
+         //данный метод вызывается тогда, когда произошла инициализация
+         // компонента и VUE готовиться создать готовыо приложение
+         
+         beforeCreate: function () {
+            console.log('Before Create');
+         },
+
+         //после этого сразу же наступает слудющий callBack:
+         //метод №2
+
+         created: function () {
+            console.log('Created');
+         }, //на этом этапе Vue приложение будет создано
+
+
+         //далее вызывается следующий методЖ
+         // метод №3
+
+         beforeMount: function () {
+            console.log('Before Mount');
+         }, // в данной функции Vue говорит о том, что оно начало
+            // анализировать шаблон, который мы ему дали и он собирается
+            // его вставаить в, непосредственно, тот элемент, в котором
+            // мы указали, что это является точкой инициализации нашего приложения,
+            // т.е. Vue готовиться вставить скомпилированный шаблон, непосредственно,
+            // в DOM - дерево, но при этом на этом этпае оно еще не вставилось
+
+         //этап, который говорит, что HTML-дерево уже готово и оно вставленно в DOM:
+         // метод №4
+
+         mounted: function () {
+            console.log('Mounted');
+         },
+
+         //=====================================================
+         //вспомогательные этапы для работы с жизненным циклом
+
+         //цикличные жизненные этапы, вызываемые перед тем как что-то
+         // изменилось или закончило изменяться
+
+         beforeUpdate: function () {
+            console.log('Before Update');
+         },
+         updated: function () {
+            console.log('Updated');
+         },
+
+         //последние два этапа, которые помогают отслеживать
+         // удаление или уничтожения компонента
+
+         beforeDestroy: function () {
+            console.log('Before Destroy');
+         },
+         destroyed: function () {
+            console.log('Destroyed');
+         }
+      })
+   </script>
+</body>
+</html>
