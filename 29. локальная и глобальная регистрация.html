@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>VUE JS</title>
+</head>
+<body>
+   <div id="app">
+
+      <my-counter v-for="c in 2"></my-counter>
+
+   </div>
+
+   <hr>
+
+   <div id="app2">
+
+      <my-counter></my-counter>
+
+   </div>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+   <script>
+
+      //обратились к глобальной переменной Vue и создали глобальный компонент
+ /*   Vue.component('my-counter', {
+         template: `
+            <div style="border: 1px solid black; padding: 10px">
+               <h2>Counter: {{ counter }}</h2>
+               <button @click="add">Add to counter</button>
+            </div>
+         `,
+         data: function () {
+            return {
+               counter: 0
+            }
+         },
+         methods: {
+            add: function () {
+               this.counter++
+            }
+         }
+      })*/
+
+      //регистрация компонента локально через переменную, которая содержит
+      // весь объект конфигурации. Если хотим использовать
+      // компонент с тегом <example> в одном приложении, а в другом
+      // с тем же тегом <example>, но с другим компонентом. Для этого
+      //мы можем регистрировать компоненты локально в каждом экземпляре
+      // ⟱
+
+      let component = {
+         template: `
+            <div style="border: 1px solid black; padding: 10px">
+               <h2>Counter: {{ counter }}</h2>
+               <button @click="add">Add to counter</button>
+            </div>
+         `,
+         data: function () {
+            return {
+               counter: 0
+            }
+         },
+         methods: {
+            add: function () {
+               this.counter++
+            }
+         }
+      }
+      //для того, чтобы зарегистрировать компонент локально в экземпляре Vue
+      //существует специальное поле - components ⟱
+      new Vue ({
+         components: {
+            'my-counter': component
+         }
+      }).$mount('#app')
+
+      new Vue ({
+         components: {
+            'my-counter': component
+         }
+      }).$mount('#app2')
+   </script>
+</body>
+</html>
